@@ -46,7 +46,10 @@ class _MyHomePageState extends State<MyHomePage> {
         Text('Use the buttons below to turn on or turn off the flashlight.'),
         ElevatedButton(onPressed: (){
           Flashlight.lightOn();
-        }, child: const Text("Turn ON"))
+        }, child: const Text("Turn ON")),
+        ElevatedButton(onPressed: (){
+          Flashlight.lightOff();
+        }, child: const Text("Turn OFF")),
       ],),
     );
   }
