@@ -42,6 +42,12 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Flashlight App'),
       ),
+      body: Column(children: [
+        Text('Use the buttons below to turn on or turn off the flashlight.'),
+        ElevatedButton(onPressed: (){
+          Flashlight.lightOn();
+        }, child: const Text("Turn ON"))
+      ],),
     );
   }
 }
