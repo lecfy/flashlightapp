@@ -42,15 +42,25 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Flashlight App'),
       ),
-      body: Column(children: [
-        Text('Use the buttons below to turn on or turn off the flashlight.'),
-        ElevatedButton(onPressed: (){
-          Flashlight.lightOn();
-        }, child: const Text("Turn ON")),
-        ElevatedButton(onPressed: (){
-          Flashlight.lightOff();
-        }, child: const Text("Turn OFF")),
-      ],),
+      body: Container(
+        alignment: Alignment.center,
+        child: myButtons(),
+      )
     );
   }
+}
+
+Widget myButtons(){
+  return Column(children: [
+    const SizedBox(height: 5),
+    Text('Use the buttons below to turn on or turn off the flashlight.'),
+    const SizedBox(height: 5),
+    ElevatedButton(onPressed: (){
+      Flashlight.lightOn();
+    }, child: const Text("Turn ON")),
+    const SizedBox(height: 5),
+    ElevatedButton(onPressed: (){
+      Flashlight.lightOff();
+    }, child: const Text("Turn OFF"), style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.red)),),
+  ],);
 }
