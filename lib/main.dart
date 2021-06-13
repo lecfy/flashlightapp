@@ -36,6 +36,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool _flashOn = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,23 +46,32 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         alignment: Alignment.center,
-        child: myButtons(),
+        child: Column(children: [
+          const SizedBox(height: 5),
+          Text('Use the buttons below to turn on or turn off the flashlight.'),
+          const SizedBox(height: 5),
+          _flashOn ? turnOffButton() : turnOnButton()
+        ],)
       )
     );
   }
-}
 
-Widget myButtons(){
-  return Column(children: [
-    const SizedBox(height: 5),
-    Text('Use the buttons below to turn on or turn off the flashlight.'),
-    const SizedBox(height: 5),
-    ElevatedButton(onPressed: (){
+  Widget turnOnButton() {
+    return ElevatedButton(onPressed: (){
+      setState(() {
+        _flashOn = true;
+      });
       Flashlight.lightOn();
-    }, child: const Text("Turn ON")),
-    const SizedBox(height: 5),
-    ElevatedButton(onPressed: (){
+    }, child: const Text("Turn ON"));
+  }
+
+  Widget turnOffButton() {
+    return ElevatedButton(onPressed: (){
+      setState(() {
+        _flashOn = false;
+      });
       Flashlight.lightOff();
-    }, child: const Text("Turn OFF"), style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.red)),),
-  ],);
+    }, child: const Text("Turn OFF"), style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.red)),);
+  }
+
 }
